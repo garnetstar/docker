@@ -1,0 +1,17 @@
+php:
+    image: nimmis/apache-php5
+    container_name: memed-web
+    ports:
+     - "82:80"
+    volumes:
+     - ~/eclipse-workspace/memed:/var/www/html
+     - ./sites-available:/etc/apache2/sites-available
+    links:
+     - mysql
+mysql:
+    image: mysql:5.6
+    volumes_from:
+     - data_mysql
+    environment:
+     - MYSQL_ROOT_PASSWORD=heslo
+     - MYSQL_DATABASE=wordpress

@@ -1,0 +1,22 @@
+client:
+    image: garnetstar/apache
+    container_name: soap-client
+    ports:
+     - "81:80"
+    links:
+     - soap-server          
+    volumes:
+     - ~/eclipse-workspace/soap:/var/www/html
+     - ./sites-available:/etc/apache2/sites-available
+
+soap-server:
+    image: garnetstar/apache
+    container_name: soap-server
+    ports:
+     - "88:80"
+    volumes:
+     - ~/eclipse-workspace/soap:/var/www/html
+     - ./sites-available:/etc/apache2/sites-available
+
+
+
